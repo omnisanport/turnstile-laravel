@@ -4,9 +4,10 @@ namespace DerekCodes\TurnstileLaravel;
 
 class TurnstileLaravel
 {
-    public function validate(String $response): Array
+    public function validate(String $response, String $site): Array
     {
-        if (!empty(config('turnstile.secret_key'))) {
+        $secret_key = 'turnstile.secret_key_'.$site;
+        if (!empty(config($secret_key))) {
             $url = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
             $curl = curl_init();
             curl_setopt_array($curl, [
@@ -20,7 +21,7 @@ class TurnstileLaravel
                 CURLOPT_CONNECTTIMEOUT => 10,
                 CURLOPT_TIMEOUT => 30,
                 CURLOPT_POSTFIELDS => json_encode([
-                    'secret' => config('turnstile.secret_key'),
+                    'secret' => config($secret_key),
                     'response' => $response
                 ]),
             ]);
