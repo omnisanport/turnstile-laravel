@@ -8,12 +8,12 @@
 	"cloudflare",
 	"turnstile"
     ],
-    "homepage": "https://github.com/derekcodes-io/turnstile-laravel",
+    "homepage": "https://github.com/omnisanport/turnstile-laravel",
     "type": "project",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "DerekCodes\\TurnstileLaravel\\": "src/"
+            "omnisanport\\TurnstileLaravel\\": "src/"
         }
     },
     "authors": [
